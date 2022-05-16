@@ -1,10 +1,14 @@
 package be.pxl.auctions.builder;
 
 import be.pxl.auctions.model.Auction;
+import be.pxl.auctions.model.Bid;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class AuctionBuilder {
+	public List<Bid> bids = new ArrayList<>();
 	private long id;
 	private String description;
 	private LocalDate endDate;
@@ -31,11 +35,17 @@ public final class AuctionBuilder {
 		return this;
 	}
 
+	public AuctionBuilder withBids(List<Bid> bids) {
+		this.bids = bids;
+		return this;
+	}
+
 	public Auction build() {
 		Auction auction = new Auction();
 		auction.setId(id);
 		auction.setDescription(description);
 		auction.setEndDate(endDate);
+		auction.setBids(bids);
 		return auction;
 	}
 }

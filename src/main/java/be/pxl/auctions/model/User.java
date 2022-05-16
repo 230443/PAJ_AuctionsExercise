@@ -1,15 +1,10 @@
 package be.pxl.auctions.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -23,6 +18,9 @@ public class User {
 	@Column(unique = true)
 	private String email;
 	private LocalDate dateOfBirth;
+
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	public List<Bid> bids = new ArrayList<>();
 
 	public long getId() {
 		return id;
@@ -62,6 +60,14 @@ public class User {
 
 	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
+	}
+
+	public List<Bid> getBids() {
+		return bids;
+	}
+
+	public void setBids(List<Bid> bids) {
+		this.bids = bids;
 	}
 
 	public int getAge() {

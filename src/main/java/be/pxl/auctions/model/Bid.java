@@ -1,12 +1,21 @@
 package be.pxl.auctions.model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "bids")
 public class Bid {
+    @Id
+    @GeneratedValue
     private long id;
     private double amount;
     private LocalDate date;
+
+    @ManyToOne
     private Auction auction;
+
+    @ManyToOne
     private User user;
 
     public Bid() {
