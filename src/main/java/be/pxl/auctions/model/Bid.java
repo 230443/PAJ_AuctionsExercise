@@ -58,4 +58,12 @@ public class Bid {
     public void setAuction(Auction auction) {
         this.auction = auction;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
