@@ -31,6 +31,15 @@ public class AuctionRest {
 		return auctionService.getAllAuctions();
 	}
 
+	@GetMapping("/{id}")
+	public AuctionDTO getAuctionById(@PathVariable("id") Long id) {
+		return auctionService.getAuctionById(id);
+	}
+
+	@GetMapping("/current")
+	public List<AuctionDTO> retrieveCurrentAuctions() {
+		return auctionService.retrieveCurrentAuctions();
+	}
 	@PostMapping
 	public AuctionDTO createAuction(@RequestBody AuctionDTO auctionDTO) {
 		return auctionService.createAuction(auctionDTO);
